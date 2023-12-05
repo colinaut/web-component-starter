@@ -1,0 +1,2 @@
+class e extends HTMLElement{constructor(){super()}static get observedAttributes(){return["foo"]}get foo(){return this.getAttribute("foo")||""}set foo(t){typeof t=="string"&&this.setAttribute("foo",t)}connectedCallback(){this.render()}attributeChangedCallback(t,n,r){}render(){const t="<div>Hello World</div>";this.innerHTML=`${t}`}}customElements.define("web-component-light-dom-ts",e);
+//# sourceMappingURL=web-component-light-dom-ts.js.map

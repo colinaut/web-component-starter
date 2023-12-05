@@ -10,9 +10,10 @@
 	"license": "MIT",
 	"author": "",
 	"type": "module",
-	"main": "dist/web-component.js",
+	"main": "dist/web-component-light-dom-ts.js",
 	"scripts": {
-		"build": "tsc && vite build",
+		"build": "tsc && vite build && rm -rf docs && cp -r dist docs",
+		"dev": "vite",
 		"preview": "vite preview",
 		"start": "vite",
 		"test": "echo \"Error: no test specified\" && exit 1"

@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
-import { resolve, parse } from "path";
+import { resolve } from "path";
 import minifyHTML from "rollup-plugin-minify-html-literals";
-import packageJson from "./package.json";
 
 // TODO: auto remove console.log from build
 // TODO: improve how docs are generated
@@ -18,10 +17,17 @@ export default defineConfig(({ mode }) => {
 				polyfill: false,
 			},
 			rollupOptions: {
-				// Grabs file name from package.json for dist
+				input: {
+					main: resolve(__dirname, "index.html"),
+					"web-component-light-dom-ts": resolve(__dirname, "src/web-component-light-dom-ts.ts"),
+					"web-component-shadow-dom-ts": resolve(__dirname, "src/web-component-shadow-dom-ts.ts"),
+					"web-component-light-dom-js": resolve(__dirname, "src/web-component-light-dom-js.js"),
+					"web-component-shadow-dom-js": resolve(__dirname, "src/web-component-shadow-dom-js.js"),
+				},
 				output: [
 					{
-						entryFileNames: () => `${parse(packageJson.main).name}.js`,
+						entryFileNames: `[name].js`,
+						assetFileNames: `assets/action-table.[ext]`,
 						dir: "dist",
 					},
 				],
