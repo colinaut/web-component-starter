@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import minifyHTML from "rollup-plugin-minify-html-literals";
+import eslint from "vite-plugin-eslint";
 
 // TODO: auto remove console.log from build
 // TODO: improve how docs are generated
@@ -27,11 +28,12 @@ export default defineConfig(({ mode }) => {
 				output: [
 					{
 						entryFileNames: `[name].js`,
-						assetFileNames: `assets/action-table.[ext]`,
+						assetFileNames: `assets/[name].[ext]`,
 						dir: "dist",
 					},
 				],
 				plugins: [
+					eslint(),
 					minifyHTML.default({
 						options: {
 							shouldMinify(template) {
